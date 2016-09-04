@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 const CommentList = (props) => {
   const list = props.comments.map(comment => <li key={comment}>{comment}</li>);
   
-  console.log(props.comments);
   return (
     <ul className="comment-list">
       {list}

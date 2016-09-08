@@ -4,7 +4,8 @@ import {
 } from './types';
 
 export function fetchUsers() {
-  const request = axios.get('http://jsonplaceholder.typicode.com/');
+  //ajax require
+  const request = axios.get('http://jsonplaceholder.typicode.com/users');
 
   return {
     type: FETCH_USERS,

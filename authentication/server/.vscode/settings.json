@@ -11,7 +11,7 @@
     "editor.fontWeight": "normal",
 
     // 控制字体大小。
-    "editor.fontSize": 14,
+    "editor.fontSize": 15,
 
     // 控制行高。使用 0 通过字号计算行高。
     "editor.lineHeight": 0,

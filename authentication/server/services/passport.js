@@ -17,6 +17,12 @@ const localLogin = new LocalStrategy(localOptions, function(email, password, don
     if (!user) { return done(null, false); }
 
     // compare password - is `password` equal to user.password?
+    user.comparePassword(password, function(err, isMatch) {
+      if(err) { return done(err); }
+      if(!isMatch) { return done(null, false); }
+
+      return done(null, user);
+    });
   });
 });
 
@@ -25,6 +31,7 @@ const jwtOptions = {
   //Function that accepts a request as the only parameter and returns either the JWT as a string or null
   jwtFromRequest: ExtractJwt.fromHeader('authorization'),
   //a REQUIRED string or buffer containing the secret (symmetric) or PEM-encoded public key (asymmetric) for verifying the token's signature.
+  //解码
   secretOrKey: config.secret, 
 };
 
@@ -48,3 +55,4 @@ const jwtLogin = new JwtStrategy(jwtOptions, function(payload, done) {
 
 // Tell passport to use this Strategy
 passport.use(jwtLogin);
+passport.use(localLogin);
